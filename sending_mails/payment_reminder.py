@@ -5,11 +5,11 @@ import json
 import boto3
 from botocore.exceptions import ClientError
 ses=boto3.client('ses')
-SENDER="ranasaket19110@gmail.com"
+SENDER=" "
 conn = pymysql.connect(
         user="root",
-        password="saketrana",
-        host="database-2.ciqfjj2rs3ed.us-east-1.rds.amazonaws.com",
+        password=" ",
+        host=" ",
         port=3306,
         database="customerrecords"
 
