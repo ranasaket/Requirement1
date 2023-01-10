@@ -10,7 +10,7 @@ z=file.read()
 response = ses.create_template(
     Template={
         'TemplateName': 'Keepsl_welcome_Template',
-        'SubjectPart': 'KEEPSL Welcome',
+        'SubjectPart': 'Welcome to Keepsl',
         'HtmlPart':str(z), 
 
     }
