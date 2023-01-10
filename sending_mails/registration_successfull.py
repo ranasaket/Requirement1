@@ -1,17 +1,11 @@
 import pymysql
+import json
 import sys
 import boto3
 from botocore.exceptions import ClientError
 ses=boto3.client('ses')
-SENDER=" "
-conn = pymysql.connect(
-        user="admin",
-        password="",
-        host="",
-        port=3306 ,
-        database="Person"
+SENDER="ranasaket19110@gmail.com "
 
-    )     
 def send_emails(name, email):
     try:
        res = ses.send_templated_email(
@@ -29,18 +23,15 @@ def send_emails(name, email):
 
     return
 
-
 def lambda_handler(event, context):
-    try:
-        cur = conn.cursor()
-        cur.execute('select * from Customers where id=3')
-        datas=list(cur.fetchall())
-
-        for curs in datas:
-            send_emails(curs[1],curs[2])
-            print(curs[1],curs[2])
-    except ClientError as e:
-        print(f"Error connecting to Database Platform: {e}")
-        sys.exit(1)
-
-lambda_handler(None,None)
+    print("Name:",event['queryStringParameters']['name'])
+    print("Email:",event['queryStringParameters']['email'])
+    name=event['queryStringParameters']['name']
+    email=event['queryStringParameters']['email']
+    send_emails(name,email)
+    
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Successfully sent mail from AWS Lambda!')
+        }
+    
