@@ -4,5 +4,5 @@ from botocore.exceptions import ClientError
 ses=boto3.client('ses')
 
 dels = ses.delete_template(
-    TemplateName='payment_reminder_Template'
+    TemplateName='Keepsl_welcome_Template'
 )

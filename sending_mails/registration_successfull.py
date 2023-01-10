@@ -13,7 +13,7 @@ def send_emails(name, email):
            Destination={
            'ToAddresses': [str(email)],
         },
-        Template='Keepsl_welcome_Template_new',
+        Template='Keepsl_welcome_Template',
         TemplateData="{\"user\":\""+str(name)+"\"}"
     )
     except ClientError as e:
